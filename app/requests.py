@@ -1,21 +1,29 @@
-from app import app
+from ..test.news_test import news
+from ..app import app
 import urllib.request,json
-from .models import news
+from .models import News
 
 
 News = news.News
 
 # Getting api key
-# api_key = app.config['NEWS_API_KEY']
+api_key = None
+# Getting the movie base url
+base_url = None
+
+def configure_request(app):
+    global api_key,base_url
+    api_key = app.config['MOVIE_API_KEY']
+    base_url = app.config['MOVIE_API_BASE_URL']
 
 # Getting the movie base url
 base_url = app.config['NEWS_API_BASE_URL']
 
-def get_news(country):
+def get_news():
     ''''
     Function that gets the json response to our url request
     '''
-    get_news_url = base_url.format(country)
+    get_news_url = base_url.format()
 
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
@@ -56,7 +64,7 @@ def process_results(news_list):
         language = news_item.get('language')
         publishedAt = news_item.get('publishedAt')
 
-        if aurthor:
+        if id:
              news_object = News(id,title,aurthor,description,content,url,urlToImage,language,publishedAt)
              news_results.append(news_object)
             #  print(f"INSIDE PROCess NEWS{news_results} : {type(news_results)}")
@@ -68,24 +76,24 @@ def process_results(news_list):
     return news_results
 
 
-def get_articles(id):
-    get_articles_details_url = base_url.format(id)
+# def get_articles(id):
+#     get_articles_details_url = base_url.format(id)
 
-    with urllib.request.urlopen(get_articles_details_url) as url:
-        articles_details_data = url.read()
-        articles_details_response = json.loads(articles_details_data)
+#     with urllib.request.urlopen(get_articles_details_url) as url:
+#         articles_details_data = url.read()
+#         articles_details_response = json.loads(articles_details_data)
 
-        articles_object = None
-        if articles_details_response:
-            id = articles_details_response.get('id')
-            name = articles_details_response.get('name')
-            description =  articles_details_response.get('description')
-            country =  articles_details_response.get('country')
-            url = articles_details_response.get('url')
-            language = articles_details_response.get('language')
-            category = articles_details_response.get('category')
+#         articles_object = None
+#         if articles_details_response:
+#             id = articles_details_response.get('id')
+#             name = articles_details_response.get('name')
+#             description =  articles_details_response.get('description')
+#             country =  articles_details_response.get('country')
+#             url = articles_details_response.get('url')
+#             language = articles_details_response.get('language')
+#             category = articles_details_response.get('category')
             
 
-            articles_object = News(id,name,description,country,url,language,category)
+#             articles_object = News(id,name,description,country,url,language,category)
 
-    return articles_object
+#     return articles_object
