@@ -56,7 +56,7 @@ def process_results(news_list):
         language = news_item.get('language')
         publishedAt = news_item.get('publishedAt')
 
-        if description:
+        if aurthor:
              news_object = News(id,title,aurthor,description,content,url,urlToImage,language,publishedAt)
              news_results.append(news_object)
             #  print(f"INSIDE PROCess NEWS{news_results} : {type(news_results)}")

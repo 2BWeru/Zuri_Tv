@@ -12,6 +12,10 @@
         {% import 'macros.html' as macro%}
     </head>
     <body>
+        <!-- Navbar block  --> 
+            {% block navbar %}
+            {% include 'navbar.html' %}
+            {% endblock %}
         <!-- Content block -->
      {% block content %}
         <h1> Hello Zuri Tv </h1>
