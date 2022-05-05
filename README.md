@@ -1,3 +1,19 @@
+# ZURI_Tv
+
+## Aurthor
+### Betty Weru
+
+### Zuri_Tv - This is a news App website.It shows current headlines in all related fields that a user might be interested in viewing.
+
+## Table of content
+- Home 
+- Top Headlines
+- News content
+- About us / contacts
+
+## Images
+
+
 ## Set Up Instructions
 
 - Create project folder
