@@ -6,12 +6,20 @@
         {% if title %}
         <title> {{ title }}</title>
         {% else %}
-        <title> Welcome to the best Movie Review website </title>
+        <title> Welcome to the best News Station website </title>
         {% endif %}
+
+        {% import 'macros.html' as macro%}
     </head>
     <body>
         <h1> Hello Zuri Tv </h1>
         <h4>{{message}}</h4>
+         
+        <h3> Popular Movies</h3>
+            <ul>
+                {{ macro.displayNewsList(popular)}}
+            </ul>
+      
     </body>
 </html>
 
