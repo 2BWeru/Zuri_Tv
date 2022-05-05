@@ -1,5 +1,3 @@
-from email import contentmanager
-
 
 class News:
     '''
