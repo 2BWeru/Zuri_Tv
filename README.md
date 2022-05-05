@@ -12,6 +12,7 @@
 - About us / contacts
 
 ## Images
+![image](https://raw.githubusercontent.com/2BWeru/Zuri_Tv/1dc2d68953a887237ec0b0bfde816dab2871cc36/app/static/css/image/Screenshot_2022-05-05_11-02-23.png)
 
 
 ## Set Up Instructions
