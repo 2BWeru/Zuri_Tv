@@ -1,14 +1,16 @@
-from app import app
 import urllib.request,json
-from ..test.news_test import Article
-from .models import article
+from .models import Article
 
-Article = article.Article
+# Article = article.Article
 
-# Getting api key
-# api_key = app.config["API_KEY_NEWS"]
 
-base_url = app.config["ARTICLES_API_BASE_URL"]
+
+base_url = None
+
+def configure_request(app):
+    global base_url
+    base_url = app.config['NEWS_API_BASE_URL']
+
 
 def get_articles(category):
     ''''
@@ -79,15 +81,17 @@ def get_article(aurthor):
             urlToImage = article_details_response.get('urlToImage')
             publishedAt = article_details_response.get('publishedAt')
             content =  article_details_response.get('content')
-        print('YEEEW')
-        print(article_details_response)   
-        article_details_response= Article(source,title,aurthor,description,url,urlToImage,publishedAt,content)
-        # article_details_response = article_object
-        
-        print("Waoow")
-        print(article_object)
 
-        print('inside article object')
-        print(article_details_response)
-        return article_details_response
+        print('YEEEW')  
+        print(article_details_response)  #check if function does work and returns values
+
+        article_details_response= Article(source,title,aurthor,description,url,urlToImage,publishedAt,content)
+        
+        
+        # print("Waoow")
+        # print(article_object)
+
+        # print('inside article object')
+        # print(article_details_response)
+    return article_details_response
 
