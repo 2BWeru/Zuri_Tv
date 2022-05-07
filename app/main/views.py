@@ -1,29 +1,29 @@
-from unicodedata import category
 from flask import render_template
-from . import main
-from ..requests import  get_news,get_articles
+from app import app
+from ..requests import get_articles,get_article
 
-@main.route('/')
+# Views
+@app.route('/')
 def index():
-     '''
-     View root page function that returns the index page and its data
-     '''
-     message = 'Welcome to Zuri_Tv'
-    
-     news= get_news()
-     return render_template('index.html',user = news)
+
+    '''
+    View root page function that returns the index page and its data
+    '''
+    article_news = get_articles('source')
+    message = 'Hello World'
+    print("inside views")
+    print(article_news)
+    return render_template('index.html',message = message, source = article_news)
 
 
-@main.route('/news/<int:id>')
-def articles(id):
+@app.route('/article/<string:aurthor>')
+def article(aurthor):
 
     '''
     View movie page function that returns the movie details page and its data
     '''
+    article = get_article('aurthor')
     
-    article = get_articles(id)
-    title = f'{articles.title}'
+    print(article)
 
-    return render_template('articles.html',title = title,articles = article,id=id)
-
-
+    return render_template('article.html',article = article)

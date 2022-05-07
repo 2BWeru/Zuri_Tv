@@ -1,22 +1,19 @@
-{% extends 'base.html'%}
+
+<h2>Hello
+    ;;
+</h2>
 <!-- Content block -->
 {% block content %}
 <div class="container">
-
     <!-- Poster background -->
-    <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 posterPath" style="background: url({{articles.urlToImage}}) no-repeat center center">
-        </div>
-
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 articles-details">
-            <h3>{{ articles.title }}</h3>
-
-            <p class="overview"> {{ articles.overview }}</p>
-            <p class="ratings"> <b> {{articles.vote_average }}</b> - <i>{{ articles.vote_count}} votes </i> </p>
-
-
-        </div>
+    <div class="card mb-3">
+        <img src="{{article.urlToImage}}" class="card-img-top" alt="..." width="900px" height="700px">
+        <div class="card-body">
+        <h5 class="card-title">{{article.title}}</h5>
+        <p class="card-text">{{article.description}}</p>
+        <p class="card-text">{{article.content}}</p>
+        <p class="card-text">{{article.url}}</p>
+        <p class="card-text"><small class="text-muted">{{article.publishedAt}}</small></p>
     </div>
-
 </div>
 {% endblock %}

@@ -1,42 +1,36 @@
 from app import app
 import urllib.request,json
-from models import news
+from ..test.news_test import Article
+from .models import article
 
-News = news.News
+Article = article.Article
 
-api_key = None
-base_url = None
+# Getting api key
+# api_key = app.config["API_KEY_NEWS"]
 
-def configure_request(app):
-    global api_key,base_url
-    api_key = app.config['NEWS_API_KEY']
-    base_url = app.config['NEWS_API_BASE_URL']
+base_url = app.config["ARTICLES_API_BASE_URL"]
 
-base_url = app.config['NEWS_API_BASE_URL']
-
-def get_news():
+def get_articles(category):
     ''''
     Function that gets the json response to our url request
     '''
-    get_news_url = base_url.format()
+    get_articles_url = base_url.format(category)
 
-    with urllib.request.urlopen(get_news_url) as url:
-        get_news_data = url.read()
-        get_news_response = json.loads(get_news_data)
+    with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_data = url.read()
+        get_articles_response = json.loads(get_articles_data)
                                                   
 
-        news_results = None
+        article_results = None
 
-        if get_news_response['articles']:
-            news_results_list = get_news_response['articles']
-            news_results = process_results(news_results_list)
+        if get_articles_response['articles']:
+            article_results_list = get_articles_response['articles']
+            article_results = process_results(article_results_list)
            
-    
-    return news_results
+    print(article_results_list)
+    return article_results
 
-
-
-def process_results(news_list):
+def process_results(article_list):
     '''
     Function  that processes the news result and transform them to a list of Objects
 
@@ -46,23 +40,54 @@ def process_results(news_list):
     Returns :
         news_results: A list of news objects
     '''
-    news_results = []
-    for  news_item in news_list:
-        id = news_item.get('id')
-        title = news_item.get('title')
-        aurthor = news_item.get('aurthor')
-        description =  news_item.get('description')
-        content =  news_item.get('content')
-        url = news_item.get('url')
-        urlToImage = news_item.get('urlToImage')
-        language = news_item.get('language')
-        publishedAt = news_item.get('publishedAt')
+    article_results = []
+    for  article_item in article_list:
+        source = article_item.get('source')
+        aurthor = article_item.get('aurthor')
+        title = article_item.get('title')
+        description =  article_item.get('description')
+        url = article_item.get('url')
+        urlToImage = article_item.get('urlToImage')
+        publishedAt = article_item.get('publishedAt')
+        content =  article_item.get('content')
 
         if id:
-             news_object = News(id,title,aurthor,description,content,url,urlToImage,language,publishedAt)
-             news_results.append(news_object)
-            
+             article_object = Article(source,aurthor,title,description,url,urlToImage,publishedAt,content)
+             article_results.append(article_object)
 
-    return news_results
+    print("inside process news")        
+    print(article_results)
+    return article_results
 
+
+def get_article(aurthor):
+    get_article_details_url = base_url.format(aurthor)
+
+    with urllib.request.urlopen(get_article_details_url) as url:
+        article_details_data = url.read()
+        article_details_response = json.loads(article_details_data)
+        
+        print(article_details_response)
+        article_object = None
+        
+        if article_details_response:
+            aurthor = article_details_response.get('aurthor')
+            source = article_details_response.get('source')
+            title = article_details_response.get('title')  
+            description =  article_details_response.get('description')
+            url = article_details_response.get('url')
+            urlToImage = article_details_response.get('urlToImage')
+            publishedAt = article_details_response.get('publishedAt')
+            content =  article_details_response.get('content')
+        print('YEEEW')
+        print(article_details_response)   
+        article_details_response= Article(source,title,aurthor,description,url,urlToImage,publishedAt,content)
+        # article_details_response = article_object
+        
+        print("Waoow")
+        print(article_object)
+
+        print('inside article object')
+        print(article_details_response)
+        return article_details_response
 
