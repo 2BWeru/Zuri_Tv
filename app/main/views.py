@@ -11,8 +11,6 @@ def index():
     '''
     article_news = get_articles('source')
     message = 'Hello World'
-    print("inside views")
-    print(article_news)
     return render_template('index.html',message = message, source = article_news)
 
 
