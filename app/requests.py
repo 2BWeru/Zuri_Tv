@@ -29,7 +29,7 @@ def get_articles(category):
             article_results_list = get_articles_response['articles']
             article_results = process_results(article_results_list)
            
-    print(article_results_list)
+    
     return article_results
 
 def process_results(article_list):
