@@ -5,34 +5,76 @@
 <!-- css styles -->
   <style>
     .jumbotron {
-      background-color: rgb(46, 0, 46); /* Orange */
+      background-color: #1abc9c; /* Orange */
       color: #ffffff;
       padding: 90px 25px;
+      margin: 20px 20px;
       
+      
+    }
+    #content{
+      padding:60px 30px;
+      font-family: 'Oleo Script Swash Caps', cursive;
+      
+    }
+    .cont{
+      background-color: salmon;
+      color: purple;
+    }
+    h1{
+      font-family: 'Lobster Two', cursive;
+      font-size: larger;
+    }
+    .card-text{
+      height: 100px;
     }
   </style>
 <!-- css styles -->
 <div class="jumbotron text-center">
-    <h1>ZURI_News</h1>
+    <h1>ZURI</h1>
+    <img class="img-circle" src="../static/images/red-news-logo-abstract-globe-260nw-304753292.webp"  alt="Bird">
     <h1>Top Headlines</h1>
 </div> 
   <br>
 <div class="container-fluid">
   <hr>
   <br>
+  <div class="row">
+    <div class="col">
   <ul>
-        {% for article in articles %}
-        <div class="card mb-3">
+    {% for article in articles %}
+    <!-- <div class="card mb-3"> -->
+    <div class="card text-white bg-danger mb-3" style="max-width: 18rem;"></div>
           <img src="{{ article.urlToImage }}" class="card-img-top" alt="..." width="700px" height="600px">
           <div class="card-body">
-            <h5 class="card-title">{{article.title}}</h5>
-            <p class="card-text"><strong>{{article.description}}</strong></p>
-            <p class="card-text"><strong>{{article.content}}</strong></p>
-            <p class="card-text"><small class="text-muted">{{article.publishedAt}}</small></p>
-          </div>
-          {% endfor%}
+          <h5 class="card-title"><a href="'/article{{article.url}}">{{article.source.name}}</a></h5>  
+    </div>
+    {% endfor%}
       </ul>
 </div>
+  <div class="col-lg-6" id="content">
+      <div class="cont">
+      <h4>Top Headlines</h4>
+   </div>
+   <br>
+  <ul>
+      {% for article in articles %}
+      <!-- <div class="card mb-3"> -->
+        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;"></div>
+        <!-- <img src="{{ article.urlToImage }}" class="card-img-top" alt="..." width="200px" height="400px"> -->
+        <div class="card-body">
+          <h5 class="card-title">{{article.title}}</h5>
+          <a  class="card-text">{{article.url}}</a>
+          <p class="card-text"><strong>{{article.aurthor}}</strong></p>
+          <p class="card-text"><strong>{{article.description}}</strong></p>
+          <p class="card-text"><strong>{{article.content}}</strong></p>
+          <p class="card-text"><small class="text-muted">{{article.publishedAt}}</small></p> -->
+  </div>
+        {% endfor%}
+    </ul>
+  </div>
+  <hr>
+  </div>
 {% endblock content %}
 
 
