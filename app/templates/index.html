@@ -5,21 +5,24 @@
 <!-- css styles -->
   <style>
     .jumbotron {
-      background-color: #1abc9c; /* Orange */
+      background-color: firebrick; /* Orange */
       color: #ffffff;
-      padding: 90px 25px;
+      padding:20px 20px;
       margin: 20px 20px;
-      
-      
+      border: 3px solid whitesmoke; 
+      border-end-end-radius: 50px; 
+      border-bottom-left-radius: 50px;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;       
     }
     #content{
-      padding:60px 30px;
-      font-family: 'Oleo Script Swash Caps', cursive;
+      padding:60px 20px;
+      font-family: 'Dancing Script', cursive;
       
     }
     .cont{
-      background-color: salmon;
-      color: purple;
+      background-color:salmon;
+      color: whitesmoke;
     }
     h1{
       font-family: 'Lobster Two', cursive;
@@ -28,12 +31,27 @@
     .card-text{
       height: 100px;
     }
+    p{
+      font-family: 'Oleo Script Swash Caps', cursive; 
+    }
+    .img-circle{
+      border-end-end-radius: 50px; 
+      border-bottom-left-radius: 50px;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px; 
+    }
+    .footer{
+      border: 2px solid gold;
+    }
+    .card-img-top{
+      border-end-end-radius: 30px; 
+    }
   </style>
 <!-- css styles -->
 <div class="jumbotron text-center">
-    <h1>ZURI</h1>
-    <img class="img-circle" src="../static/images/red-news-logo-abstract-globe-260nw-304753292.webp"  alt="Bird">
-    <h1>Top Headlines</h1>
+    <!-- <h1>ZURI</h1> -->
+    <img class="img-circle" src="../static/images/vv.jpg" width="1000px" height="500px" alt="Bird">
+    <!-- <h1>Top Headlines</h1> -->
 </div> 
   <br>
 <div class="container-fluid">
@@ -45,7 +63,7 @@
     {% for article in articles %}
     <!-- <div class="card mb-3"> -->
     <div class="card text-white bg-danger mb-3" style="max-width: 18rem;"></div>
-          <img src="{{ article.urlToImage }}" class="card-img-top" alt="..." width="700px" height="600px">
+          <img src="{{ article.urlToImage }}" class="card-img-top" alt="..." width="800px" height="600px">
           <div class="card-body">
           <h5 class="card-title"><a href="'/article{{article.url}}">{{article.source.name}}</a></h5>  
     </div>

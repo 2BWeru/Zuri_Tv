@@ -1,7 +1,6 @@
-.jumbotron {
-  background-color: salmon; /* Orange */
-  color: #ffffff;
-}
 .foot_content{
   background-color: salmon;
+}
+body{
+  border: 3px solid purple;
 }
