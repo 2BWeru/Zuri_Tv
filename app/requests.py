@@ -59,10 +59,7 @@ def process_results(article_list):
          if id:
              article_object = Article(source,aurthor,title,description,url,urlToImage,publishedAt,content)
              article_results.append(article_object)
-    print("YWYY")
-    print(article_results)
-    print("inside process news")        
-    print(Article) 
+     
     return article_results
 
 
@@ -86,16 +83,10 @@ def get_article(aurthor):
             publishedAt = article_details_response.get('publishedAt')
             content =  article_details_response.get('content')
 
-        print('YEEEW')  
-        print(article_details_response)  #check if function does work and returns values
 
         article_details_response= Article(source,title,aurthor,description,url,urlToImage,publishedAt,content)
         
         
-        print("Waoow")
-        print(article_object)
-
-        print('inside article object')
-        print(article_details_response)
+        
     return article_details_response
 
