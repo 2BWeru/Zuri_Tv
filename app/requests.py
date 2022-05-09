@@ -1,7 +1,6 @@
+from unicodedata import category
 import urllib.request,json
 from .models import Article
-
-# Article = article.Article
 
 
 
@@ -28,9 +27,11 @@ def get_articles(category):
         if get_articles_response['articles']:
             article_results_list = get_articles_response['articles']
             article_results = process_results(article_results_list)
-           
-    
+
+   
     return article_results
+
+
 
 def process_results(article_list):
     '''
@@ -44,21 +45,24 @@ def process_results(article_list):
     '''
     article_results = []
     for  article_item in article_list:
-        source = article_item.get('source')
-        aurthor = article_item.get('aurthor')
-        title = article_item.get('title')
-        description =  article_item.get('description')
-        url = article_item.get('url')
-        urlToImage = article_item.get('urlToImage')
-        publishedAt = article_item.get('publishedAt')
-        content =  article_item.get('content')
-
-        if id:
+         source = article_item.get('source')
+         aurthor = article_item.get('aurthor')
+         title = article_item.get('title')
+         description =  article_item.get('description')
+         url = article_item.get('url')
+         urlToImage = article_item.get('urlToImage')
+         publishedAt = article_item.get('publishedAt')
+         content=  article_item.get('content')
+         
+         
+         
+         if id:
              article_object = Article(source,aurthor,title,description,url,urlToImage,publishedAt,content)
              article_results.append(article_object)
-
-    print("inside process news")        
+    print("YWYY")
     print(article_results)
+    print("inside process news")        
+    print(Article) 
     return article_results
 
 
@@ -88,10 +92,10 @@ def get_article(aurthor):
         article_details_response= Article(source,title,aurthor,description,url,urlToImage,publishedAt,content)
         
         
-        # print("Waoow")
-        # print(article_object)
+        print("Waoow")
+        print(article_object)
 
-        # print('inside article object')
-        # print(article_details_response)
+        print('inside article object')
+        print(article_details_response)
     return article_details_response
 
