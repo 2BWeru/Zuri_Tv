@@ -16,7 +16,7 @@
       border-top-right-radius: 50px;       
     }
     #content{
-      padding:60px 20px;
+      padding:80px 20px;
       font-family: 'Dancing Script', cursive;
       
     }
@@ -30,9 +30,6 @@
     }
     .card-text{
       height: 100px;
-    }
-    p{
-      font-family: 'Oleo Script Swash Caps', cursive; 
     }
     .img-circle{
       border-end-end-radius: 50px; 
@@ -80,16 +77,23 @@
       <!-- <div class="card mb-3"> -->
         <div class="card text-white bg-danger mb-3" style="max-width: 18rem;"></div>
         <!-- <img src="{{ article.urlToImage }}" class="card-img-top" alt="..." width="200px" height="400px"> -->
+        <br>
+        <br>
         <div class="card-body">
-          <h5 class="card-title">{{article.title}}</h5>
+          <br>
+          <h5 class="card-title">{{article.source.name}}</h5>
+          <p class="card-title"><i>{{article.source.id}}</i></p>
           <a  class="card-text">{{article.url}}</a>
-          <p class="card-text"><strong>{{article.aurthor}}</strong></p>
+          <br>
+          <br>
           <p class="card-text"><strong>{{article.description}}</strong></p>
           <p class="card-text"><strong>{{article.content}}</strong></p>
-          <p class="card-text"><small class="text-muted">{{article.publishedAt}}</small></p> -->
+          <p class="card-text"><small class="text-muted">{{article.publishedAt}}</small></p> 
   </div>
         {% endfor%}
     </ul>
+    <br>
+    <br>
   </div>
   <hr>
   </div>
